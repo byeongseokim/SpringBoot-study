@@ -4,11 +4,12 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
@@ -29,20 +30,24 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 프로젝트에서 연결된 DB의 넘버링 전략을 따라감.
 	private int id; // 시퀀스, auto_increment // SEQUENCE, TABLE, AUTO등이 있음
 
-	@Column(nullable = false, length=30, unique=true)
+	@Column(nullable = false, length = 30, unique = true)
 	private String username; // 아이디
 
-	@Column(nullable = false,length=50)
-	private String email; //myEMail, my_email
-	
-	@ColumnDefault("'user'") //안쪽에 작은 따옴표
-	//DB는 RoleType 이라는 것이 없다.
-	//@Enumerated(EnumType.STRING)
-	//private RoleType role;  // Enum을 쓰는게 좋다. // ADMIN, USER
-	private String role;
-	
-	//내가 직접 시간을 넣으려면 Timestamp.valueOf(LocalDateTime.now())
-	@CreationTimestamp //시간이 자동 입력
+	@Column(nullable = false, length = 100) // 12345 => 해시 (비밀번호 암호화)
+	private String password;
+
+	@Column(nullable = false, length = 50)
+	private String email; // myEMail, my_email
+
+
+	// DB는 RoleType 이라는 것이 없다.
+	// @Enumerated(EnumType.STRING)
+	// private RoleType role; // Enum을 쓰는게 좋다. // ADMIN, USER
+	@Enumerated(EnumType.STRING)
+	private RoleType role; //Enum을 쓰는게 좋다 . // ADMIN, USER
+
+	// 내가 직접 시간을 넣으려면 Timestamp.valueOf(LocalDateTime.now())
+	@CreationTimestamp // 시간이 자동 입력
 	private Timestamp createDate;
 
 }
