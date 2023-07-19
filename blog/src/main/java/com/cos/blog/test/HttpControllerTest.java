@@ -45,7 +45,8 @@ public class HttpControllerTest {
 
 	@PutMapping("http/put")
 	public String putTest(@RequestBody Member m) {
-		return "put 요청" + m.getId() + "," + m.getUsername() + "," + m.getPassword() + "," + m.getEmail();
+		return "put 요청:" +m.getId()+","+m.getUsername()+","+m.getPassword()+","+m.getEmail();
+	
 
 	}
 
