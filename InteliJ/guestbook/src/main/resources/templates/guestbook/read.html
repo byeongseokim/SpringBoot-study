@@ -5,7 +5,7 @@
 
     <th:block th:fragment="content">
 
-        <h1 class="mt-4">GuestBook Read Page</h1>
+        <h1 class="mt-4">상세보기</h1>
 
         <div class="form-group">
             <label >Gno</label>
@@ -13,7 +13,7 @@
         </div>
 
         <div class="form-group">
-            <label >Title</label>>
+            <label >Title</label>
             <input type="text" class="form-control" name="title" th:value="${dto.title}" readonly >
         </div>
         <div class="form-group">
@@ -33,17 +33,17 @@
             <input type="text" class="form-control" name="modDate" th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
         </div>
 
-<!--        <a th:href="@{/guestbook/modify(gno = ${dto.gno}, page=${requestDTO.page})}"><button type="button" class="btn btn-primary">Modify</button></a>-->
+ <a th:href="@{/guestbook/modify(gno = ${dto.gno}, page=${requestDTO.page})}"><button type="button" class="btn btn-primary">Modify</button></a>
 
-<!--        <a th:href="@{/guestbook/list(page=${requestDTO.page})}"><button type="button" class="btn btn-info">List</button></a>-->
+<a th:href="@{/guestbook/list(page=${requestDTO.page})}"><button type="button" class="btn btn-info">List</button></a>
 
-        <a th:href="@{/guestbook/modify(gno = ${dto.gno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
+        <!--<a th:href="@{/guestbook/modify(gno = ${dto.gno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
             <button type="button" class="btn btn-primary">Modify</button>
         </a>
 
         <a th:href="@{/guestbook/list(page=${requestDTO.page} , type=${requestDTO.type}, keyword =${requestDTO.keyword})}">
             <button type="button" class="btn btn-info">List</button>
-        </a>
+        </a>-->
 
     </th:block>
 
